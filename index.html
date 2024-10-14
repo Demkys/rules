@@ -30,12 +30,18 @@
             position: relative;
         }
 
-        /* Анимация заголовка */
+        /* Анимация заголовка с эффектом свечения */
         h1 {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 20px;
-            color: #ffca28;
+            color: #ffca28; /* Цвет текста */
+            text-shadow: 
+                0 0 5px #ffca28, /* Светлое свечение */
+                0 0 10px #ffca28,
+                0 0 15px #ffca28,
+                0 0 20px #ffca28,
+                0 0 25px #ffca28; /* Увеличиваем эффект свечения */
             animation: fadeIn 2s ease-in-out;
         }
 
@@ -201,3 +207,4 @@
 
 </body>
 </html>
+
