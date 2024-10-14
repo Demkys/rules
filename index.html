@@ -30,18 +30,12 @@
             position: relative;
         }
 
-        /* Анимация заголовка с эффектом свечения */
+        /* Анимация заголовка */
         h1 {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 20px;
-            color: #ffca28; /* Цвет текста */
-            text-shadow: 
-                0 0 5px #ffca28, /* Светлое свечение */
-                0 0 10px #ffca28,
-                0 0 15px #ffca28,
-                0 0 20px #ffca28,
-                0 0 25px #ffca28; /* Увеличиваем эффект свечения */
+            color: #ffca28;
             animation: fadeIn 2s ease-in-out;
         }
 
@@ -105,7 +99,7 @@
             height: 150%;
             background: black url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
             z-index: -1;
-            animation: moveStars 100s linear infinite; /* Медленное движение звёзд */
+            animation: moveStars 50s linear infinite; /* Увеличенная скорость движения звезд */
             transform: translateZ(0);
             will-change: transform;
         }
@@ -116,7 +110,7 @@
                 background-position: 0 0;
             }
             100% {
-                background-position: 2000px 2000px;
+                background-position: 2000px -1000px; /* Изменено направление движения */
             }
         }
 
@@ -207,4 +201,3 @@
 
 </body>
 </html>
-
