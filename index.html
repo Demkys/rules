@@ -6,48 +6,29 @@
     <title>Правила сообщества</title>
     <link rel="icon" href="sbfma7pb (1).png" type="image/png">
     <style>
-        /* Общие стили для всей страницы */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #000000; /* Чёрный фон */
+            background-color: #000000;
             color: #e0e0e0;
-            line-height: 1.6;
             margin: 0;
-            overflow-x: hidden;
-            padding: 0 10px; /* Отступ для мобильных устройств */
-            user-select: none; /* Запрет выделения текста */
+            padding: 0 10px;
+            user-select: none;
         }
 
-        /* Контейнер с правилами */
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 50px auto;
-            background-color: #1e1e1e;
             padding: 30px;
+            background-color: #1e1e1e;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            z-index: 10;
-            position: relative;
         }
 
-        /* Анимация заголовка */
         h1 {
             text-align: center;
+            color: #ffca28;
             font-size: 2.5rem;
             margin-bottom: 20px;
-            color: #ffca28;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         ul {
@@ -57,36 +38,9 @@
 
         ul li {
             background-color: #2c2c2c;
-            border-left: 5px solid #ff6b6b;
             margin-bottom: 10px;
             padding: 15px;
-            font-size: 1.1rem;
             border-radius: 5px;
-            transition: background-color 0.3s, border-color 0.3s;
-            opacity: 0; /* Начальная прозрачность для анимации */
-            transform: translateX(-100%); /* Сдвиг влево для анимации */
-            animation: slideIn 0.5s forwards; /* Применение анимации */
-        }
-
-        @keyframes slideIn {
-            0% {
-                transform: translateX(-100%); /* Начальная позиция */
-                opacity: 0; /* Начальная прозрачность */
-            }
-            100% {
-                transform: translateX(0); /* Конечная позиция */
-                opacity: 1; /* Полная видимость */
-            }
-        }
-
-        ul li:hover {
-            background-color: #3b3b3b;
-            border-color: #ffca28;
-        }
-
-        ul li span {
-            font-weight: bold;
-            color: #f44336;
         }
 
         .note {
@@ -99,12 +53,11 @@
 
         footer {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 50px;
             font-size: 0.9rem;
             color: #999;
         }
 
-        /* Фон со звёздами с параллакс-эффектом */
         .stars {
             position: fixed;
             top: 0;
@@ -113,120 +66,84 @@
             height: 150%;
             background: black url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
             z-index: -1;
-            animation: moveStars 50s linear infinite; /* Увеличенная скорость движения звезд */
-            transform: translateZ(0);
-            will-change: transform;
+            animation: moveStars 60s linear infinite;
         }
 
-        /* Плавное движение звёзд */
         @keyframes moveStars {
             0% {
                 background-position: 0 0;
             }
             100% {
-                background-position: 2000px -1000px; /* Изменено направление движения */
+                background-position: 2000px -1000px;
             }
         }
 
-        /* Добавление осенних листьев */
-        .leaves {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none; /* Чтобы не мешать взаимодействию с контейнером */
-            background-image: url('https://cdn.pixabay.com/photo/2016/11/21/17/31/autumn-1841152_1280.png');
-            background-repeat: no-repeat;
-            background-size: cover;
-            opacity: 0.3; /* Прозрачность для мягкого эффекта */
-            z-index: -1;
+        /* Кнопки навигации */
+        .nav-buttons {
+            text-align: center;
+            margin-bottom: 30px;
         }
 
-        /* Параллакс-эффект при прокрутке */
-        .stars {
-            background-attachment: fixed;
+        .nav-buttons a {
+            display: inline-block;
+            padding: 15px 25px;
+            margin: 10px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #ff6b6b;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
         }
 
-        /* Контейнер должен корректно реагировать на высоту контента */
-        html, body {
-            min-height: 100%;
-        }
-        .container {
-            margin-bottom: 50px;
+        .nav-buttons a:hover {
+            background-color: #ffca28;
         }
 
-        /* Мобильная адаптация */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            ul li {
-                font-size: 1rem;
-            }
-
-            .container {
-                padding: 20px;
-            }
-        }
-
-        /* Стили для кнопки Telegram */
-        .telegram-button {
-            display: block;
-            width: 64px;
-            height: 64px;
-            margin: 20px auto; /* Центрирование кнопки */
-            background: url('telegram-64x64.png') no-repeat center center;
-            background-size: contain; /* Масштабирование изображения */
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .telegram-button:hover {
-            transform: scale(1.1); /* Увеличение кнопки при наведении */
+        .active {
+            background-color: #ffca28 !important;
         }
     </style>
 </head>
-<body oncontextmenu="return false;"> <!-- Отключение правой кнопки мыши -->
+<body>
 
-    <!-- Звёздное небо на заднем фоне -->
+    <!-- Звёздный фон -->
     <div class="stars"></div>
-    <div class="leaves"></div> <!-- Осенние листья -->
 
+    <!-- Кнопки навигации -->
+    <div class="nav-buttons">
+        <a href="https://demkys.github.io/main/" class="nav-link" id="main-link">Главная</a>
+        <a href="https://demkys.github.io/rules/" class="nav-link" id="rules-link">Правила</a>
+    </div>
+
+    <!-- Контент -->
     <div class="container">
         <h1>Правила сообщества</h1>
-
         <ul>
-            <li style="animation-delay: 0.2s;">Распространение порнографии в любом виде. — <span>Бан</span>.</li>
-            <li style="animation-delay: 0.4s;">Деанон, доксинг и любые другие способы раскрытия анонимной информации. — <span>Предупреждение</span>.</li>
-            <li style="animation-delay: 0.6s;">Распространение ссылок на запрещённые материалы, включая расчленёнку, порнографию и сомнительные источники. — <span>Предупреждение или мут</span>.</li>
-            <li style="animation-delay: 0.8s;">Попытки вывести бота из строя. — <span>Предупреждение</span>.</li>
-            <li style="animation-delay: 1s;">Спам. — <span>Предупреждение или мут</span>.</li>
-            <li style="animation-delay: 1.2s;">Распространение расчленёнки. — <span>Предупреждение или бан</span>.</li>
-            <li style="animation-delay: 1.4s;">Пропаганда терроризма и радикализма. — <span>Предупреждение или мут</span>.</li>
-            <li style="animation-delay: 1.6s;">Реклама. — <span>Предупреждение или мут</span>.</li>
+            <li>Распространение порнографии в любом виде. — <span>Бан</span>.</li>
+            <li>Деанон, доксинг и любые другие способы раскрытия анонимной информации. — <span>Предупреждение</span>.</li>
+            <!-- Остальные правила -->
         </ul>
-
         <div class="note">
             Присоединяясь к группе, вы подтверждаете, что ознакомились с правилами и обязуетесь их соблюдать.
         </div>
-
-        <!-- Кнопка Telegram -->
-        <a href="https://t.me/DemkysX" target="_blank" class="telegram-button"></a>
-
-        <footer>
-            Администрация оставляет за собой право вносить изменения в правила без обязательного уведомления участников.
-        </footer>
     </div>
 
+    <footer>
+        Администрация оставляет за собой право вносить изменения в правила без обязательного уведомления участников.
+    </footer>
+
     <script>
-        // Отключение сочетаний клавиш
-        document.onkeydown = function(e) {
-            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'i' || e.key === 'I' || e.key === 'j' || e.key === 'J' || e.key === 'c' || e.key === 'C')) {
-                return false;
-            }
-        };
+        // Логика для активной кнопки
+        const currentUrl = window.location.href;
+        const mainLink = document.getElementById('main-link');
+        const rulesLink = document.getElementById('rules-link');
+
+        if (currentUrl.includes('main')) {
+            mainLink.classList.add('active');
+        } else if (currentUrl.includes('rules')) {
+            rulesLink.classList.add('active');
+        }
     </script>
 
 </body>
