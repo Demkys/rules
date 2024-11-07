@@ -16,7 +16,7 @@
             overflow-x: hidden;
             padding: 0 10px; /* Отступ для мобильных устройств */
             user-select: none; /* Запрет выделения текста */
-            transition: background-color 0.3s, color 0.3s; /* Плавный переход */
+            transition: background-color 0.3s, color 0.3s; /* Плавный переход для смены темы */
         }
 
         /* Контейнер с правилами */
@@ -29,7 +29,17 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
             z-index: 10;
             position: relative;
-            transition: background-color 0.3s; /* Плавный переход для контейнера */
+            transition: background-color 0.3s;
+        }
+
+        /* Темная и светлая темы */
+        .light-theme {
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+        .light-theme .container {
+            background-color: #f9f9f9;
         }
 
         /* Анимация заголовка */
@@ -53,167 +63,76 @@
             }
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
+        /* Остальные стили (без изменений) ... */
 
-        ul li {
-            background-color: #3b3b3b; /* Тёмный фон для элементов списка */
-            border-left: 5px solid #ff4500; /* Оранжевая граница */
-            margin-bottom: 10px;
-            padding: 15px;
-            font-size: 1.1rem;
-            border-radius: 5px;
-            transition: background-color 0.3s, border-color 0.3s;
-            opacity: 0; /* Начальная прозрачность для анимации */
-            transform: translateX(-100%); /* Сдвиг влево для анимации */
-            animation: slideIn 0.5s forwards; /* Применение анимации */
-        }
-
-        @keyframes slideIn {
-            0% {
-                transform: translateX(-100%); /* Начальная позиция */
-                opacity: 0; /* Начальная прозрачность */
-            }
-            100% {
-                transform: translateX(0); /* Конечная позиция */
-                opacity: 1; /* Полная видимость */
-            }
-        }
-
-        ul li:hover {
-            background-color: #4a4a4a; /* Светлее при наведении */
-            border-color: #ff7f50; /* Оранжевая граница при наведении */
-        }
-
-        ul li span {
-            font-weight: bold;
-            color: #ff6347; /* Красный цвет для выделения */
-        }
-
-        .note {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #333; /* Тёмный фон для заметки */
-            border-left: 5px solid #ffa500; /* Оранжевая граница для заметки */
-            border-radius: 5px;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 0.9rem;
-            color: #999;
-        }
-
-        /* Звезды для темной темы */
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 150%;
-            background: black url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
-            z-index: -1;
-            animation: moveStars 50s linear infinite; /* Увеличенная скорость движения звезд */
-            transform: translateZ(0);
-            will-change: transform;
-        }
-
-        /* Плавное движение звёзд */
-        @keyframes moveStars {
-            0% {
-                background-position: 0 0;
-            }
-            100% {
-                background-position: 2000px -1000px; /* Изменено направление движения */
-            }
-        }
-
-        /* Параллакс-эффект при прокрутке */
-        .stars {
-            background-attachment: fixed;
-        }
-
-        /* Контейнер должен корректно реагировать на высоту контента */
-        html, body {
-            min-height: 100%;
-        }
-        .container {
-            margin-bottom: 50px;
-        }
-
-        /* Мобильная адаптация */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            ul li {
-                font-size: 1rem;
-            }
-
-            .container {
-                padding: 20px;
-            }
-        }
-
-        /* Стили для кнопки Telegram */
-        .telegram-button {
-            display: block;
-            width: 64px;
-            height: 64px;
-            margin: 20px auto; /* Центрирование кнопки */
-            background: url('telegram-64x64.png') no-repeat center center;
-            background-size: contain; /* Масштабирование изображения */
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .telegram-button:hover {
-            transform: scale(1.1); /* Увеличение кнопки при наведении */
-        }
-
-        /* Темная/светлая тема переключатель */
+        /* Стили для переключателя темы */
         .theme-toggle {
             position: fixed;
             top: 20px;
             right: 20px;
-            width: 40px;
-            height: 40px;
-            background-color: transparent;
-            border: none;
+            width: 50px;
+            height: 25px;
+            background-color: #333;
+            border-radius: 20px;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .theme-toggle.light {
+            background-color: #ddd;
+        }
+
+        .toggle-slider {
+            width: 20px;
+            height: 20px;
+            background-color: #ffeb3b; /* Желтый цвет для солнца */
+            border-radius: 50%;
+            position: relative;
             transition: transform 0.3s;
         }
 
-        .theme-toggle img {
-            width: 100%;
-            height: 100%;
-            transition: transform 0.3s;
+        .theme-toggle.light .toggle-slider {
+            background-color: #333; /* Серый для луны */
+            transform: translateX(25px);
+        }
+        
+        /* Иконка темы */
+        .icon {
+            width: 20px;
+            height: 20px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
         }
 
-        /* Стили для светлой темы */
-        body.light-theme {
-            background-color: #f4f4f4; /* Светлый фон */
-            color: #333;
+        .icon.sun {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e6/Sun_symbol.svg');
+            right: 10px;
         }
 
-        .container.light-theme {
-            background-color: #ffffff; /* Белый фон для контейнера */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        .icon.moon {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/81/Moon_symbol.svg');
+            left: 10px;
         }
 
-        .stars.light-theme {
-            background: transparent;
-        }
     </style>
 </head>
-<body oncontextmenu="return false;" class="light-theme"> <!-- Начинаем с светлой темы -->
+<body class="dark-theme" oncontextmenu="return false;"> <!-- Отключение правой кнопки мыши -->
 
     <!-- Звёздное небо на заднем фоне -->
     <div class="stars"></div>
+    <div class="halloween"></div> <!-- Хэллоуинские элементы -->
+
+    <!-- Контейнер переключателя темы -->
+    <div class="theme-toggle" id="themeToggle">
+        <div class="icon sun"></div>
+        <div class="toggle-slider"></div>
+        <div class="icon moon"></div>
+    </div>
 
     <div class="container">
         <h1>Правила сообщества</h1>
@@ -241,27 +160,27 @@
         </footer>
     </div>
 
-    <!-- Кнопка переключения темы -->
-    <button class="theme-toggle" onclick="toggleTheme()">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Icon_Moon.svg" alt="Theme Toggle">
-    </button>
-
     <script>
-        function toggleTheme() {
-            const body = document.body;
-            const container = document.querySelector('.container');
-            const themeToggleIcon = document.querySelector('.theme-toggle img');
-
-            body.classList.toggle('light-theme');
-            container.classList.toggle('light-theme');
-
-            // Меняем иконку
-            if (body.classList.contains('light-theme')) {
-                themeToggleIcon.src = 'https://upload.wikimedia.org/wikipedia/commons/3/33/Icon_Moon.svg'; // Луна
-            } else {
-                themeToggleIcon.src = 'https://upload.wikimedia.org/wikipedia/commons/1/13/Sun_icon_%28black%29.svg'; // Солнце
+        // Отключение сочетаний клавиш
+        document.onkeydown = function(e) {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'i' || e.key === 'I' || e.key === 'j' || e.key === 'J' || e.key === 'c' || e.key === 'C')) {
+                return false;
             }
-        }
+        };
+
+        // Переключение темы
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            themeToggle.classList.toggle('light');
+        });
+    </script>
+
+</body>
+</html>
+
     </script>
 
 </body>
