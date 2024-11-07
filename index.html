@@ -16,6 +16,7 @@
             overflow-x: hidden;
             padding: 0 10px; /* Отступ для мобильных устройств */
             user-select: none; /* Запрет выделения текста */
+            transition: background-color 0.3s, color 0.3s; /* Плавный переход */
         }
 
         /* Контейнер с правилами */
@@ -28,6 +29,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
             z-index: 10;
             position: relative;
+            transition: background-color 0.3s; /* Плавный переход для контейнера */
         }
 
         /* Анимация заголовка */
@@ -105,7 +107,7 @@
             color: #999;
         }
 
-        /* Фон со звёздами с параллакс-эффектом */
+        /* Звезды для темной темы */
         .stars {
             position: fixed;
             top: 0;
@@ -127,21 +129,6 @@
             100% {
                 background-position: 2000px -1000px; /* Изменено направление движения */
             }
-        }
-
-        /* Добавление хэллоуинских элементов */
-        .halloween {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none; /* Чтобы не мешать взаимодействию с контейнером */
-            background-image: url('https://cdn.pixabay.com/photo/2020/10/06/09/45/halloween-5630542_1280.png'); /* Изображение хэллоуина */
-            background-repeat: no-repeat;
-            background-size: cover;
-            opacity: 0.2; /* Прозрачность для мягкого эффекта */
-            z-index: -1;
         }
 
         /* Параллакс-эффект при прокрутке */
@@ -187,13 +174,46 @@
         .telegram-button:hover {
             transform: scale(1.1); /* Увеличение кнопки при наведении */
         }
+
+        /* Темная/светлая тема переключатель */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .theme-toggle img {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s;
+        }
+
+        /* Стили для светлой темы */
+        body.light-theme {
+            background-color: #f4f4f4; /* Светлый фон */
+            color: #333;
+        }
+
+        .container.light-theme {
+            background-color: #ffffff; /* Белый фон для контейнера */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stars.light-theme {
+            background: transparent;
+        }
     </style>
 </head>
-<body oncontextmenu="return false;"> <!-- Отключение правой кнопки мыши -->
+<body oncontextmenu="return false;" class="light-theme"> <!-- Начинаем с светлой темы -->
 
     <!-- Звёздное небо на заднем фоне -->
     <div class="stars"></div>
-    <div class="halloween"></div> <!-- Хэллоуинские элементы -->
 
     <div class="container">
         <h1>Правила сообщества</h1>
@@ -221,13 +241,27 @@
         </footer>
     </div>
 
+    <!-- Кнопка переключения темы -->
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Icon_Moon.svg" alt="Theme Toggle">
+    </button>
+
     <script>
-        // Отключение сочетаний клавиш
-        document.onkeydown = function(e) {
-            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'i' || e.key === 'I' || e.key === 'j' || e.key === 'J' || e.key === 'c' || e.key === 'C')) {
-                return false;
+        function toggleTheme() {
+            const body = document.body;
+            const container = document.querySelector('.container');
+            const themeToggleIcon = document.querySelector('.theme-toggle img');
+
+            body.classList.toggle('light-theme');
+            container.classList.toggle('light-theme');
+
+            // Меняем иконку
+            if (body.classList.contains('light-theme')) {
+                themeToggleIcon.src = 'https://upload.wikimedia.org/wikipedia/commons/3/33/Icon_Moon.svg'; // Луна
+            } else {
+                themeToggleIcon.src = 'https://upload.wikimedia.org/wikipedia/commons/1/13/Sun_icon_%28black%29.svg'; // Солнце
             }
-        };
+        }
     </script>
 
 </body>
