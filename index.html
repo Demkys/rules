@@ -111,7 +111,7 @@
 
     </style>
 </head>
-<body class="dark-theme" oncontextmenu="return false"> <!-- Запрет контекстного меню -->
+<body oncontextmenu="return false"> <!-- Запрет контекстного меню -->
 
     <!-- Кнопка переключения темы -->
     <div class="theme-toggle dark" id="themeToggle"></div>
@@ -119,14 +119,14 @@
     <div class="container">
         <h1>Правила сообщества</h1>
         <ul>
-            <li style="animation-delay: 0.2s;">Распространение порнографии в любом виде. — <span>Бан</span>.</li>
-            <li style="animation-delay: 0.4s;">Деанон, доксинг и любые другие способы раскрытия анонимной информации. — <span>Предупреждение</span>.</li>
-            <li style="animation-delay: 0.6s;">Распространение ссылок на запрещённые материалы, включая расчленёнку, порнографию и сомнительные источники. — <span>Предупреждение или мут</span>.</li>
-            <li style="animation-delay: 0.8s;">Попытки вывести бота из строя. — <span>Предупреждение</span>.</li>
-            <li style="animation-delay: 1s;">Спам. — <span>Предупреждение или мут</span>.</li>
-            <li style="animation-delay: 1.2s;">Распространение расчленёнки. — <span>Предупреждение или бан</span>.</li>
-            <li style="animation-delay: 1.4s;">Пропаганда терроризма и радикализма. — <span>Предупреждение или мут</span>.</li>
-            <li style="animation-delay: 1.6s;">Реклама. — <span>Предупреждение или мут</span>.</li>
+            <li>Распространение порнографии в любом виде. — <span>Бан</span>.</li>
+            <li>Деанон, доксинг и любые другие способы раскрытия анонимной информации. — <span>Предупреждение</span>.</li>
+            <li>Распространение ссылок на запрещённые материалы, включая расчленёнку, порнографию и сомнительные источники. — <span>Предупреждение или мут</span>.</li>
+            <li>Попытки вывести бота из строя. — <span>Предупреждение</span>.</li>
+            <li>Спам. — <span>Предупреждение или мут</span>.</li>
+            <li>Распространение расчленёнки. — <span>Предупреждение или бан</span>.</li>
+            <li>Пропаганда терроризма и радикализма. — <span>Предупреждение или мут</span>.</li>
+            <li>Реклама. — <span>Предупреждение или мут</span>.</li>
         </ul>
         <div class="note">
             Присоединяясь к группе, вы подтверждаете, что ознакомились с правилами и обязуетесь их соблюдать.
@@ -144,28 +144,39 @@
             }
         };
 
-        // Переключение темы
+        // Функция установки темы
+        function setTheme(theme) {
+            const body = document.body;
+            const themeToggle = document.getElementById('themeToggle');
+
+            if (theme === 'light') {
+                body.classList.add('light-theme');
+                themeToggle.classList.add('light');
+                themeToggle.classList.remove('dark');
+            } else {
+                body.classList.remove('light-theme');
+                themeToggle.classList.add('dark');
+                themeToggle.classList.remove('light');
+            }
+        }
+
+        // Проверка сохраненной темы при загрузке страницы
+        window.addEventListener('load', () => {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            setTheme(savedTheme);
+        });
+
+        // Переключение темы и сохранение состояния
         const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-
         themeToggle.addEventListener('click', () => {
-            // Переключаем тему
-            body.classList.toggle('light-theme');
-            themeToggle.classList.toggle('light');
-            themeToggle.classList.toggle('dark');
+            const isLightTheme = document.body.classList.toggle('light-theme');
+            const newTheme = isLightTheme ? 'light' : 'dark';
 
-            // Запускаем анимацию
-            themeToggle.classList.add('animate');
-            setTimeout(() => {
-                themeToggle.classList.remove('animate');
-            }, 500);
+            // Сохранение выбранной темы в localStorage
+            localStorage.setItem('theme', newTheme);
+            setTheme(newTheme);
         });
     </script>
-
-</body>
-</html>
-
-
 
 </body>
 </html>
