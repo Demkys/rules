@@ -12,17 +12,23 @@
             background-color: #1c1c1c;
             color: #e0e0e0;
             transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
         }
 
-        /* Контейнер с правилами */
+        /* Эстетичное оформление контейнера с правилами */
         .container {
             max-width: 800px;
             margin: 50px auto;
-            background-color: #2b2b2b;
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-            transition: background-color 0.3s;
+            border-radius: 12px;
+            background: linear-gradient(145deg, #2e2e2e, #3b3b3b);
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4), -4px -4px 10px rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .container:hover {
+            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5), -8px -8px 15px rgba(255, 255, 255, 0.2);
         }
 
         /* Темная и светлая темы */
@@ -32,7 +38,9 @@
         }
 
         .light-theme .container {
-            background-color: #f9f9f9;
+            background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2), -6px -6px 12px rgba(255, 255, 255, 0.7);
+            border-color: rgba(0, 0, 0, 0.1);
         }
 
         /* Кнопка переключателя темы */
@@ -47,17 +55,14 @@
             transition: background-image 0.5s ease;
         }
 
-        /* Фон кнопки по умолчанию для темной темы */
         .theme-toggle.dark {
             background-image: url('poss2.png');
         }
 
-        /* Фон кнопки для светлой темы */
         .theme-toggle.light {
             background-image: url('poss1.png');
         }
 
-        /* Анимация смены темы */
         .theme-toggle.animate {
             animation: toggleAnimation 0.5s;
         }
@@ -67,9 +72,46 @@
             50% { transform: scale(1.2); }
             100% { transform: scale(1); }
         }
+
+        /* Стили текста */
+        h1 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #ff7f50;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        li span {
+            font-weight: bold;
+            color: #ff5e57;
+        }
+        
+        /* Примечание и нижний колонтитул */
+        .note, footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            text-align: center;
+            color: #a0a0a0;
+        }
+
     </style>
 </head>
-<body class="dark-theme">
+<body class="dark-theme" oncontextmenu="return false"> <!-- Запрет контекстного меню -->
 
     <!-- Кнопка переключения темы -->
     <div class="theme-toggle dark" id="themeToggle"></div>
@@ -95,6 +137,13 @@
     </div>
 
     <script>
+        // Отключение сочетаний клавиш для доступа к консоли
+        document.onkeydown = function(e) {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'i' || e.key === 'I' || e.key === 'j' || e.key === 'J' || e.key === 'c' || e.key === 'C')) {
+                return false;
+            }
+        };
+
         // Переключение темы
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
@@ -115,6 +164,7 @@
 
 </body>
 </html>
+
 
 
 </body>
