@@ -9,26 +9,19 @@
         /* Общие стили для всей страницы */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #1c1c1c; /* Темный фон */
+            background-color: #1c1c1c;
             color: #e0e0e0;
-            line-height: 1.6;
-            margin: 0;
-            overflow-x: hidden;
-            padding: 0 10px; /* Отступ для мобильных устройств */
-            user-select: none; /* Запрет выделения текста */
-            transition: background-color 0.3s, color 0.3s; /* Плавный переход для смены темы */
+            transition: background-color 0.3s, color 0.3s;
         }
 
         /* Контейнер с правилами */
         .container {
             max-width: 800px;
             margin: 50px auto;
-            background-color: #2b2b2b; /* Более светлый фон для контейнера */
+            background-color: #2b2b2b;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-            z-index: 10;
-            position: relative;
             transition: background-color 0.3s;
         }
 
@@ -42,101 +35,47 @@
             background-color: #f9f9f9;
         }
 
-        /* Анимация заголовка */
-        h1 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #ff7f50; /* Оранжевый цвет */
-            text-shadow: 2px 2px 5px #000; /* Тень для эффекта */
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Остальные стили (без изменений) ... */
-
-        /* Стили для переключателя темы */
+        /* Кнопка переключателя темы */
         .theme-toggle {
             position: fixed;
             top: 20px;
             right: 20px;
             width: 50px;
             height: 25px;
-            background-color: #333;
-            border-radius: 20px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            padding: 5px;
-            transition: background-color 0.3s;
+            background-size: cover;
+            transition: background-image 0.5s ease;
         }
 
+        /* Фон кнопки по умолчанию для темной темы */
+        .theme-toggle.dark {
+            background-image: url('poss2.png');
+        }
+
+        /* Фон кнопки для светлой темы */
         .theme-toggle.light {
-            background-color: #ddd;
+            background-image: url('poss1.png');
         }
 
-        .toggle-slider {
-            width: 20px;
-            height: 20px;
-            background-color: #ffeb3b; /* Желтый цвет для солнца */
-            border-radius: 50%;
-            position: relative;
-            transition: transform 0.3s;
+        /* Анимация смены темы */
+        .theme-toggle.animate {
+            animation: toggleAnimation 0.5s;
         }
 
-        .theme-toggle.light .toggle-slider {
-            background-color: #333; /* Серый для луны */
-            transform: translateX(25px);
+        @keyframes toggleAnimation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
         }
-        
-        /* Иконка темы */
-        .icon {
-            width: 20px;
-            height: 20px;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: absolute;
-        }
-
-        .icon.sun {
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e6/Sun_symbol.svg');
-            right: 10px;
-        }
-
-        .icon.moon {
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/81/Moon_symbol.svg');
-            left: 10px;
-        }
-
     </style>
 </head>
-<body class="dark-theme" oncontextmenu="return false;"> <!-- Отключение правой кнопки мыши -->
+<body class="dark-theme">
 
-    <!-- Звёздное небо на заднем фоне -->
-    <div class="stars"></div>
-    <div class="halloween"></div> <!-- Хэллоуинские элементы -->
-
-    <!-- Контейнер переключателя темы -->
-    <div class="theme-toggle" id="themeToggle">
-        <div class="icon sun"></div>
-        <div class="toggle-slider"></div>
-        <div class="icon moon"></div>
-    </div>
+    <!-- Кнопка переключения темы -->
+    <div class="theme-toggle dark" id="themeToggle"></div>
 
     <div class="container">
         <h1>Правила сообщества</h1>
-
         <ul>
             <li style="animation-delay: 0.2s;">Распространение порнографии в любом виде. — <span>Бан</span>.</li>
             <li style="animation-delay: 0.4s;">Деанон, доксинг и любые другие способы раскрытия анонимной информации. — <span>Предупреждение</span>.</li>
@@ -147,41 +86,36 @@
             <li style="animation-delay: 1.4s;">Пропаганда терроризма и радикализма. — <span>Предупреждение или мут</span>.</li>
             <li style="animation-delay: 1.6s;">Реклама. — <span>Предупреждение или мут</span>.</li>
         </ul>
-
         <div class="note">
             Присоединяясь к группе, вы подтверждаете, что ознакомились с правилами и обязуетесь их соблюдать.
         </div>
-
-        <!-- Кнопка Telegram -->
-        <a href="https://t.me/DemkysX" target="_blank" class="telegram-button"></a>
-
         <footer>
             Администрация оставляет за собой право вносить изменения в правила без обязательного уведомления участников.
         </footer>
     </div>
 
     <script>
-        // Отключение сочетаний клавиш
-        document.onkeydown = function(e) {
-            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'i' || e.key === 'I' || e.key === 'j' || e.key === 'J' || e.key === 'c' || e.key === 'C')) {
-                return false;
-            }
-        };
-
         // Переключение темы
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
 
         themeToggle.addEventListener('click', () => {
+            // Переключаем тему
             body.classList.toggle('light-theme');
             themeToggle.classList.toggle('light');
+            themeToggle.classList.toggle('dark');
+
+            // Запускаем анимацию
+            themeToggle.classList.add('animate');
+            setTimeout(() => {
+                themeToggle.classList.remove('animate');
+            }, 500);
         });
     </script>
 
 </body>
 </html>
 
-    </script>
 
 </body>
 </html>
