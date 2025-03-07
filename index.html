@@ -11,6 +11,8 @@
             font-family: 'Arial', sans-serif;
             background-color: #1c1c1c;
             color: #e0e0e0;
+            margin: 0;
+            padding: 0;
             transition: background-color 0.3s, color 0.3s;
             overflow-x: hidden;
         }
@@ -76,7 +78,7 @@
         /* Стили текста */
         h1 {
             text-align: center;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
             color: #50D0FF;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
@@ -89,11 +91,17 @@
         }
 
         li {
-            margin: 10px 0;
-            padding: 10px;
+            margin: 15px 0;
+            padding: 15px;
             background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        li:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: inset 4px 4px 6px rgba(0, 0, 0, 0.3);
         }
 
         li span {
@@ -107,6 +115,10 @@
             font-size: 0.9rem;
             text-align: center;
             color: #a0a0a0;
+        }
+
+        footer {
+            font-size: 0.8rem;
         }
 
     </style>
