@@ -6,190 +6,77 @@
     <title>Правила сообщества</title>
     <link rel="icon" href="tjzju9hk.png" type="image/png">
     <style>
-        /* Общие стили для всей страницы */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #1c1c1c;
+            background-color: #121212;
             color: #e0e0e0;
             margin: 0;
             padding: 0;
-            transition: background-color 0.3s, color 0.3s;
-            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
-        /* Эстетичное оформление контейнера с правилами */
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 30px;
+        .rules-container {
+            width: 90%;
+            max-width: 900px;
+            background: #1e1e1e;
             border-radius: 12px;
-            background: linear-gradient(145deg, #2e2e2e, #3b3b3b);
-            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4), -4px -4px 10px rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: background-color 0.3s, box-shadow 0.3s;
-        }
-
-        .container:hover {
-            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5), -8px -8px 15px rgba(255, 255, 255, 0.2);
-        }
-
-        /* Темная и светлая темы */
-        .light-theme {
-            background-color: #ffffff;
-            color: #333333;
-        }
-
-        .light-theme .container {
-            background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
-            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2), -6px -6px 12px rgba(255, 255, 255, 0.7);
-            border-color: rgba(0, 0, 0, 0.1);
-        }
-
-        /* Кнопка переключателя темы */
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 50px;
-            height: 25px;
-            cursor: pointer;
-            background-size: cover;
-            transition: background-image 0.5s ease;
-        }
-
-        .theme-toggle.dark {
-            background-image: url('poss2.png');
-        }
-
-        .theme-toggle.light {
-            background-image: url('poss1.png');
-        }
-
-        .theme-toggle.animate {
-            animation: toggleAnimation 0.5s;
-        }
-
-        @keyframes toggleAnimation {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-
-        /* Стили текста */
-        h1 {
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             text-align: center;
+        }
+
+        h1 {
+            color: #FF9800;
             font-size: 2.5rem;
             margin-bottom: 20px;
-            color: #50D0FF;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
 
         ul {
             list-style: none;
             padding: 0;
-            margin: 0;
         }
 
         li {
-            margin: 15px 0;
+            background: #262626;
             padding: 15px;
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s, box-shadow 0.3s;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        li:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            box-shadow: inset 4px 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        li span {
+        .penalty {
+            color: #f44336;
             font-weight: bold;
-            color: #ff5e57;
-        }
-        
-        /* Примечание и нижний колонтитул */
-        .note, footer {
-            margin-top: 20px;
-            font-size: 0.9rem;
-            text-align: center;
-            color: #a0a0a0;
         }
 
         footer {
-            font-size: 0.8rem;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #a0a0a0;
         }
-
     </style>
 </head>
-<body oncontextmenu="return false"> <!-- Запрет контекстного меню -->
-
-    <!-- Кнопка переключения темы -->
-    <div class="theme-toggle dark" id="themeToggle"></div>
-
-<div class="container">
-    <h1>Правила сообщества</h1>
-    <ul>
-        <li>Распространение порнографии в любом виде. — <span>Бан</span>.</li>
-        <li>Деанон, доксинг и любые другие способы раскрытия анонимной информации. — <span>Предупреждение</span>.</li>
-        <li>Распространение ссылок на запрещённые материалы, включая расчленёнку, порнографию и сомнительные источники. — <span>Предупреждение или мут</span>.</li>
-        <li>Попытки вывести бота из строя. — <span>Предупреждение</span>.</li>
-        <li>Спам. — <span>Предупреждение или мут</span>.</li>
-        <li>Распространение расчленёнки. — <span>Предупреждение или бан</span>.</li>
-        <li>Пропаганда терроризма и радикализма. — <span>Предупреждение или мут</span>.</li>
-        <li>Реклама. — <span>Предупреждение или мут</span>.</li>
-        <li>Неуважение и оскорбления в адрес администрации. — <span>Мут или бан</span>.</li>
-    </ul>
-    <div class="note">
-        Присоединяясь к группе, вы подтверждаете, что ознакомились с правилами и обязуетесь их соблюдать.
+<body>
+    <div class="rules-container">
+        <h1>📜 Правила сообщества</h1>
+        <ul>
+            <li>🚫 Распространение порнографии в любом виде <span class="penalty">— Бан</span></li>
+            <li>🔒 Деанон, доксинг и раскрытие анонимной информации <span class="penalty">— Предупреждение</span></li>
+            <li>🛑 Распространение запрещённых материалов (расчленёнка, порнография) <span class="penalty">— Предупреждение или мут</span></li>
+            <li>⚙️ Попытки вывести бота из строя <span class="penalty">— Предупреждение</span></li>
+            <li>📢 Спам <span class="penalty">— Предупреждение или мут</span></li>
+            <li>💀 Распространение расчленёнки <span class="penalty">— Предупреждение или бан</span></li>
+            <li>⚠️ Пропаганда терроризма и радикализма <span class="penalty">— Предупреждение или мут</span></li>
+            <li>🚷 Реклама без разрешения <span class="penalty">— Предупреждение или мут</span></li>
+            <li>👮‍♂️ Неуважение и оскорбления в адрес администрации <span class="penalty">— Мут или бан</span></li>
+        </ul>
+        <footer>Присоединяясь, вы подтверждаете, что ознакомились с правилами и обязуетесь их соблюдать.</footer>
     </div>
-    <footer>
-        Администрация оставляет за собой право вносить изменения в правила без обязательного уведомления участников.
-    </footer>
-</div>
-
-    <script>
-        // Отключение сочетаний клавиш для доступа к консоли
-        document.onkeydown = function(e) {
-            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'i' || e.key === 'I' || e.key === 'j' || e.key === 'J' || e.key === 'c' || e.key === 'C')) {
-                return false;
-            }
-        };
-
-        // Функция установки темы
-        function setTheme(theme) {
-            const body = document.body;
-            const themeToggle = document.getElementById('themeToggle');
-
-            if (theme === 'light') {
-                body.classList.add('light-theme');
-                themeToggle.classList.add('light');
-                themeToggle.classList.remove('dark');
-            } else {
-                body.classList.remove('light-theme');
-                themeToggle.classList.add('dark');
-                themeToggle.classList.remove('light');
-            }
-        }
-
-        // Проверка сохраненной темы при загрузке страницы
-        window.addEventListener('load', () => {
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            setTheme(savedTheme);
-        });
-
-        // Переключение темы и сохранение состояния
-        const themeToggle = document.getElementById('themeToggle');
-        themeToggle.addEventListener('click', () => {
-            const isLightTheme = document.body.classList.toggle('light-theme');
-            const newTheme = isLightTheme ? 'light' : 'dark';
-
-            // Сохранение выбранной темы в localStorage
-            localStorage.setItem('theme', newTheme);
-            setTheme(newTheme);
-        });
-    </script>
-
 </body>
 </html>
