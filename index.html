@@ -1,85 +1,160 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Правила сообщества</title>
-    <link rel="icon" href="tjzju9hk.png" type="image/png">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Правила сообщества | 2025</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+  <style>
+    :root {
+      --neon: #4fffd7;
+      --bg: #0d0f17;
+    }
 
-        .rules-container {
-            width: 100%;
-            max-width: 900px;
-            background: #1e1e1e;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            text-align: center;
-        }
+    * {
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+    }
 
-        h1 {
-            color: #FF9800;
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: #f0f3ff;
+      line-height: 1.5;
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+    }
 
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+    .protocol {
+      width: min(100%, 800px);
+      background: rgba(16, 18, 25, 0.95);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(79, 255, 215, 0.1);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    }
 
-        li {
-            background: #262626;
-            padding: 12px;
-            margin: 8px 0;
-            border-radius: 8px;
-            font-size: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+    h1 {
+      font-weight: 600;
+      font-size: 2.2rem;
+      color: var(--neon);
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+      text-align: center;
+    }
 
-        .penalty {
-            color: #f44336;
-            font-weight: bold;
-        }
+    .rule-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      margin: 0.8rem 0;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-        footer {
-            margin-top: 15px;
-            font-size: 0.8rem;
-            color: #a0a0a0;
-        }
-    </style>
+    .rule-item:hover {
+      transform: translateX(8px);
+      box-shadow: 0 4px 16px rgba(79, 255, 215, 0.1);
+    }
+
+    .penalty {
+      font-weight: 500;
+      color: var(--neon);
+      font-size: 0.9em;
+      margin-left: 1.5rem;
+      white-space: nowrap;
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.5);
+      text-align: center;
+      border-top: 1px solid rgba(79, 255, 215, 0.1);
+      padding-top: 1rem;
+    }
+
+    @media (max-width: 640px) {
+      .protocol {
+        padding: 1.5rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .rule-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .penalty {
+        margin-left: 0;
+      }
+    }
+  </style>
+  <script>
+    document.addEventListener('contextmenu', event => event.preventDefault());
+  </script>
 </head>
 <body>
-    <div class="rules-container">
-        <h1>📜 Правила сообщества</h1>
-        <ul>
-            <li>🚫 Распространение порнографии в любом виде <span class="penalty">— Бан</span></li>
-            <li>🔒 Деанон, доксинг и раскрытие анонимной информации <span class="penalty">— Предупреждение</span></li>
-            <li>🛑 Распространение запрещённых материалов (расчленёнка, порнография) <span class="penalty">— Предупреждение или мут</span></li>
-            <li>⚙️ Попытки вывести бота из строя <span class="penalty">— Предупреждение</span></li>
-            <li>📢 Спам <span class="penalty">— Предупреждение или мут</span></li>
-            <li>💀 Распространение расчленёнки <span class="penalty">— Предупреждение или бан</span></li>
-            <li>⚠️ Пропаганда терроризма и радикализма <span class="penalty">— Предупреждение или мут</span></li>
-            <li>🚷 Реклама без разрешения <span class="penalty">— Предупреждение или мут</span></li>
-            <li>👮‍♂️ Неуважение и оскорбления в адрес администрации <span class="penalty">— Мут или бан</span></li>
-        </ul>
-        <footer>Присоединяясь, вы подтверждаете, что ознакомились с правилами и обязуетесь их соблюдать.</footer>
+  <div class="protocol">
+    <h1>Правила сообщества</h1>
+
+    <div class="rule-item">
+      <span>🚫 Распространение порнографии в любом виде</span>
+      <span class="penalty">Бан</span>
     </div>
+
+    <div class="rule-item">
+      <span>🔒 Деанон, доксинг и раскрытие анонимной информации</span>
+      <span class="penalty">Предупреждение</span>
+    </div>
+
+    <div class="rule-item">
+      <span>🛑 Распространение запрещённых материалов</span>
+      <span class="penalty">Предупреждение или бан</span>
+    </div>
+
+    <div class="rule-item">
+      <span>⚙️ Попытки вывести бота из строя</span>
+      <span class="penalty">Предупреждение</span>
+    </div>
+
+    <div class="rule-item">
+      <span>📢 Спам</span>
+      <span class="penalty">Предупреждение или мут</span>
+    </div>
+
+    <div class="rule-item">
+      <span>💀 Распространение расчленёнки</span>
+      <span class="penalty">Предупреждение или бан</span>
+    </div>
+
+    <div class="rule-item">
+      <span>⚠️ Пропаганда терроризма и радикализма</span>
+      <span class="penalty">Предупреждение или мут</span>
+    </div>
+
+    <div class="rule-item">
+      <span>🚷 Реклама без разрешения</span>
+      <span class="penalty">Предупреждение или мут</span>
+    </div>
+
+    <div class="rule-item">
+      <span>👮‍♂️ Неуважение и оскорбления в адрес администрации</span>
+      <span class="penalty">Мут или бан</span>
+    </div>
+
+    <footer>2025 04 11</footer>
+  </div>
 </body>
 </html>
