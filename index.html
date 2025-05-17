@@ -4,157 +4,377 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Правила сообщества | 2025</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --neon: #4fffd7;
-      --bg: #0d0f17;
-    }
-
     * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       user-select: none;
       -webkit-user-select: none;
       -moz-user-select: none;
+      -ms-user-select: none;
     }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: #f0f3ff;
-      line-height: 1.5;
-      margin: 0;
+      background: linear-gradient(135deg, #18181b, #09090b);
+      color: #f8fafc;
       min-height: 100vh;
-      display: grid;
-      place-items: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       padding: 1rem;
     }
 
-    .protocol {
-      width: min(100%, 800px);
-      background: rgba(16, 18, 25, 0.95);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(79, 255, 215, 0.1);
-      border-radius: 20px;
-      padding: 2.5rem;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    .container {
+      width: 100%;
+      max-width: 800px;
+      animation: fadeIn 0.5s ease-out;
     }
 
-    h1 {
-      font-weight: 600;
-      font-size: 2.2rem;
-      color: var(--neon);
-      margin-bottom: 2rem;
-      letter-spacing: -0.02em;
+    .header {
       text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .divider {
+      height: 4px;
+      width: 80px;
+      background: linear-gradient(to right, #8b5cf6, #ec4899);
+      margin: 0 auto;
+      border-radius: 2px;
+    }
+
+    .rules-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      perspective: 1000px;
     }
 
     .rule-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem;
-      margin: 0.8rem 0;
-      background: rgba(255, 255, 255, 0.03);
+      background-color: rgba(24, 24, 27, 0.6);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(39, 39, 42, 0.5);
       border-radius: 12px;
-      transition: transform 0.2s, box-shadow 0.2s;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      opacity: 0;
+      transform: translateY(20px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .rule-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
     }
 
     .rule-item:hover {
-      transform: translateX(8px);
-      box-shadow: 0 4px 16px rgba(79, 255, 215, 0.1);
+      background-color: rgba(39, 39, 42, 0.7);
+      transform: translateY(-5px) translateX(8px) scale(1.02);
+      box-shadow: 
+        0 10px 25px -5px rgba(0, 0, 0, 0.2),
+        0 0 15px -3px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+      z-index: 1;
+    }
+
+    .rule-item:hover::before {
+      transform: translateX(100%);
+    }
+
+    .icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(39, 39, 42, 0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .rule-item:hover .icon {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+    }
+
+    .icon::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .rule-item:hover .icon::after {
+      opacity: 1;
+    }
+
+    .rule-content {
+      flex-grow: 1;
+      transition: transform 0.3s ease;
+    }
+
+    .rule-item:hover .rule-content {
+      transform: translateX(5px);
+    }
+
+    .rule-text {
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .rule-item:hover .rule-text {
+      color: #ffffff;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
     }
 
     .penalty {
-      font-weight: 500;
-      color: var(--neon);
-      font-size: 0.9em;
-      margin-left: 1.5rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
       white-space: nowrap;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
 
-    footer {
-      margin-top: 2.5rem;
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.5);
+    .rule-item:hover .penalty {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      padding: 0.3rem 0.9rem;
+    }
+
+    .penalty::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      transform: scale(0.5);
+    }
+
+    .rule-item:hover .penalty::before {
+      opacity: 1;
+      animation: pulse 1.5s infinite;
+    }
+
+    .penalty-ban {
+      background-color: rgba(239, 68, 68, 0.1);
+      color: #ef4444;
+    }
+
+    .rule-item:hover .penalty-ban {
+      background-color: rgba(239, 68, 68, 0.2);
+    }
+
+    .penalty-mute {
+      background-color: rgba(245, 158, 11, 0.1);
+      color: #f59e0b;
+    }
+
+    .rule-item:hover .penalty-mute {
+      background-color: rgba(245, 158, 11, 0.2);
+    }
+
+    .penalty-warning {
+      background-color: rgba(139, 92, 246, 0.1);
+      color: #8b5cf6;
+    }
+
+    .rule-item:hover .penalty-warning {
+      background-color: rgba(139, 92, 246, 0.2);
+    }
+
+    .penalty-mixed-ban {
+      background-color: rgba(239, 68, 68, 0.1);
+      color: #ef4444;
+    }
+
+    .rule-item:hover .penalty-mixed-ban {
+      background-color: rgba(239, 68, 68, 0.2);
+    }
+
+    .penalty-mixed-mute {
+      background-color: rgba(245, 158, 11, 0.1);
+      color: #f59e0b;
+    }
+
+    .rule-item:hover .penalty-mixed-mute {
+      background-color: rgba(245, 158, 11, 0.2);
+    }
+
+    .footer {
+      margin-top: 4rem;
       text-align: center;
-      border-top: 1px solid rgba(79, 255, 215, 0.1);
-      padding-top: 1rem;
+      animation: fadeIn 0.5s ease-out 1.2s forwards;
+      opacity: 0;
+    }
+
+    .date {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(39, 39, 42, 0.8);
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      color: #a1a1aa;
+      transition: all 0.3s ease;
+    }
+
+    .date:hover {
+      border-color: rgba(139, 92, 246, 0.5);
+      color: #d4d4d8;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.2;
+      }
+      100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
     }
 
     @media (max-width: 640px) {
-      .protocol {
-        padding: 1.5rem;
-      }
-
-      h1 {
-        font-size: 1.8rem;
-      }
-
       .rule-item {
         flex-direction: column;
         align-items: flex-start;
+      }
+
+      .header h1 {
+        font-size: 1.875rem;
+      }
+
+      .rule-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
         gap: 0.5rem;
       }
 
-      .penalty {
-        margin-left: 0;
+      .rule-item:hover {
+        transform: translateY(-3px) scale(1.01);
       }
     }
   </style>
-  <script>
-    document.addEventListener('contextmenu', event => event.preventDefault());
-  </script>
 </head>
 <body>
-  <div class="protocol">
-    <h1>Правила сообщества</h1>
-
-    <div class="rule-item">
-      <span>🚫 Распространение порнографии в любом виде</span>
-      <span class="penalty">Бан</span>
+  <div class="container">
+    <div class="header">
+      <h1>Правила сообщества</h1>
+      <div class="divider"></div>
     </div>
 
-    <div class="rule-item">
-      <span>🔒 Деанон, доксинг и раскрытие анонимной информации</span>
-      <span class="penalty">Предупреждение</span>
+    <div class="rules-list" id="rulesList">
+
     </div>
 
-    <div class="rule-item">
-      <span>🛑 Распространение запрещённых материалов</span>
-      <span class="penalty">Предупреждение или бан</span>
+    <div class="footer">
+      <div class="date">17.05.2025</div>
     </div>
-
-    <div class="rule-item">
-      <span>⚙️ Попытки вывести бота из строя</span>
-      <span class="penalty">Предупреждение</span>
-    </div>
-
-    <div class="rule-item">
-      <span>📢 Спам</span>
-      <span class="penalty">Предупреждение или мут</span>
-    </div>
-
-    <div class="rule-item">
-      <span>💀 Распространение расчленёнки</span>
-      <span class="penalty">Предупреждение или бан</span>
-    </div>
-
-    <div class="rule-item">
-      <span>⚠️ Пропаганда терроризма и радикализма</span>
-      <span class="penalty">Предупреждение или мут</span>
-    </div>
-
-    <div class="rule-item">
-      <span>🚷 Реклама без разрешения</span>
-      <span class="penalty">Предупреждение или мут</span>
-    </div>
-
-    <div class="rule-item">
-      <span>👮‍♂️ Неуважение и оскорбления в адрес администрации</span>
-      <span class="penalty">Мут или бан</span>
-    </div>
-
-    <footer>2025 04 11</footer>
   </div>
+
+  <script>
+
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+
+    const rules = [
+      { rule: "Распространение порнографии в любом виде", penalty: "Бан", icon: "🚫", type: "ban" },
+      { rule: "Деанон, доксинг и раскрытие анонимной информации", penalty: "Предупреждение", icon: "🔒", type: "warning" },
+      { rule: "Распространение запрещённых материалов", penalty: "Предупреждение или бан", icon: "🛑", type: "mixed-ban" },
+      { rule: "Попытки вывести бота из строя", penalty: "Предупреждение", icon: "⚙️", type: "warning" },
+      { rule: "Спам", penalty: "Предупреждение или мут", icon: "📢", type: "mixed-mute" },
+      { rule: "Распространение расчленёнки", penalty: "Предупреждение или бан", icon: "💀", type: "mixed-ban" },
+      { rule: "Пропаганда терроризма и радикализма", penalty: "Предупреждение или мут", icon: "⚠️", type: "mixed-mute" },
+      { rule: "Реклама без разрешения", penalty: "Предупреждение или мут", icon: "🚷", type: "mixed-mute" },
+      { rule: "Неуважение и оскорбления в адрес администрации", penalty: "Мут или бан", icon: "👮‍♂️", type: "mixed-ban" }
+    ];
+
+    const rulesList = document.getElementById('rulesList');
+    
+    rules.forEach((rule, index) => {
+      const ruleItem = document.createElement('div');
+      ruleItem.className = 'rule-item';
+      ruleItem.style.animationDelay = `${index * 0.1}s`;
+      ruleItem.style.animationFillMode = 'forwards';
+      ruleItem.style.animationName = 'fadeIn';
+      ruleItem.style.animationDuration = '0.5s';
+      
+      const penaltyClass = `penalty-${rule.type}`;
+      
+      ruleItem.innerHTML = `
+        <div class="icon">${rule.icon}</div>
+        <div class="rule-content">
+          <div class="rule-text">${rule.rule}</div>
+        </div>
+        <div class="penalty ${penaltyClass}">${rule.penalty}</div>
+      `;
+      
+      rulesList.appendChild(ruleItem);
+    });
+  </script>
 </body>
 </html>
